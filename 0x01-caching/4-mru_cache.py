@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Create a class LRUCache that inherits from BaseCaching
+"""Create a class MRUCache that inherits from BaseCaching
 """
 from base_caching import BaseCaching
 
