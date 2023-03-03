@@ -10,14 +10,15 @@ client.on('connect', () => {
     console.log(`Redis client not connected to the server: ${err}`);
 });
 
-client.subscribe('holberton school channel');
-client.on('message', (channel, message) => {
-    if (channel === 'holberton school channel') {
-        if (message === 'KILL SERVER') {
-            client.unsubscribe('holberton school channel');
-            console.log(message);
-            client.quit();
-        } else
-            console.log(message);
-    }
-})
+function publishMessage(message, time) {
+    setTimeout(() => {
+        console.log(`About to send ${message}`);
+        client.publish('holberton school channel', message);
+    }, time)
+}
+
+
+publishMessage('Holberton Student #1 starts course', 100);
+publishMessage('Holberton Student #2 starts course', 200);
+publishMessage('KILL_SERVER', 300);
+publishMessage('Holberton Student #3 starts course', 400);
